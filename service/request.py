@@ -3,6 +3,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import subprocess
 import json
+import time
 import httplib
 
 flag = 0
@@ -20,6 +21,8 @@ def request():
   httpServDst.request('POST', '/cgi_form.cgi', '{"name":"src"}')
   response = httpServDst.getresponse()
   httpServDst.close()
+
+  time.sleep(1)
 
   httpServDst = httplib.HTTPConnection(stream_dst, 10369)
   httpServDst.connect()
