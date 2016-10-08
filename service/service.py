@@ -26,21 +26,17 @@ class MyHandler(BaseHTTPRequestHandler):
     data = self.rfile.read(length).decode('utf-8')
     json_msg = json.loads(str(data))
     print json_msg
-    if json_msg['name'] == "Src":
-      print "Src"
+    if json_msg['name'] == "src":
+      print "src"
       self.send_response(200)
-      # global flag
-      # if flag == 0:
-      #   subprocess.Popen(['./run.sh'])
-      #   # flag = 1
+      subprocess.Popen(['./src.sh'])
+      # localhost:xxxx/update
       return
-    elif json_msg['name'] == "Dst":
-      print "Dst"
+    elif json_msg['name'] == "dst":
+      print "dst"
       self.send_response(200)
-      # global flag
-      # if flag == 0:
-      #   subprocess.Popen(['./run.sh'])
-      #   # flag = 1
+      subprocess.Popen(['./dst.sh'])
+      # localhost:xxxx/update
       return
     self.send_response(200)
 
